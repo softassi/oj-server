@@ -26,7 +26,6 @@ public class User {
     @JsonProperty(value = "create_time")
     private String createTime = new Date().toString();
 
-
     public User(String name) {
         this.name = name;
     }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public interface UserRepository  extends CrudRepository<User, String> {
+public interface UserRepository extends CrudRepository<User, String> {
 
     @Override
     List<User> findAll();
