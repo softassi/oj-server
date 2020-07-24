@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.xml.transform.Result;
+
 /**
  * @ClassName : TagController
  * @Description :
@@ -19,9 +21,16 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @RequestMapping("save")
+    @RequestMapping("/save")
     public ResultBody save() {
         tagService.save();
+        return ResultBody.success();
+    }
+
+    @RequestMapping("/get")
+    public ResultBody get() {
+        System.out.println("你好");
+        tagService.get();
         return ResultBody.success();
     }
 }

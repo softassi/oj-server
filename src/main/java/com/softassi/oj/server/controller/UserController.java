@@ -33,4 +33,9 @@ public class UserController {
         List<User> list = userService.list();
         return ResultBody.success(list);
     }
+
+    @RequestMapping("/get")
+    public ResultBody get() {
+        return ResultBody.success();
+    }
 }

@@ -33,10 +33,11 @@ public class Auth {
         return userRepository.findAll();
     }
 
-    // @PutMapping("/")
-    // public User createUser(@RequestBody CreateUser user){
-    //     return userRepository.save(new User(null,user.getName(),user.getCreateTime()), 12);
-    // }
+    @PutMapping("/")
+    public User createUser(@RequestBody CreateUser user){
+        // return userRepository.save(new User(null,user.getName(),user.getCreateTime()));
+        return new User();
+    }
 
     @PostMapping("/")
     public User fixUser(@RequestBody FixUser user){

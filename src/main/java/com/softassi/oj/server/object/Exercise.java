@@ -52,7 +52,7 @@ public class Exercise {
 
     @Field("question_time")
     @JsonProperty("question_time")
-    private String questionTime = LocalDateTime.now().toString();
+    private LocalDateTime questionTime = LocalDateTime.now();
 
     @Field("pass_rate")
     @JsonProperty("pass_rate")

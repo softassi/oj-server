@@ -29,4 +29,9 @@ public class Tag {
     @Field
     private String name;
 
+    // @Field
+    // private LocalDateTime test = LocalDateTime.now();
+
+    // @Field
+    // private Date test2 = new Date();
 }
