@@ -23,6 +23,9 @@ public class User {
     @Field
     private String name;
 
+    @Field
+    private String password;
+
     @Field("create_time")
     @JsonProperty(value = "create_time")
     private LocalDateTime createTime = LocalDateTime.now();
