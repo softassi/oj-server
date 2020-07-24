@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -31,15 +32,16 @@ public class Auth {
     public List<User> getUsers(){
         return userRepository.findAll();
     }
-    @PutMapping("/")
-    public User createUser(@RequestBody CreateUser user){
-        return userRepository.save(new User(null,user.getName(),user.getCreateTime()));
-    }
+
+    // @PutMapping("/")
+    // public User createUser(@RequestBody CreateUser user){
+    //     return userRepository.save(new User(null,user.getName(),user.getCreateTime()), 12);
+    // }
 
     @PostMapping("/")
     public User fixUser(@RequestBody FixUser user){
         User user1 = userRepository.findUserByName(user.getName());
-        user1.setCreateTime(new Date().toString());
+        user1.setCreateTime(LocalDateTime.now());
         return userRepository.save(user1);
     }
 

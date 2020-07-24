@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ClassName : Exercise
@@ -25,7 +26,7 @@ import java.util.Date;
 public class Exercise {
 
     @Id
-    private Integer id;
+    private String id;
 
     @Field
     private String title;
@@ -51,12 +52,13 @@ public class Exercise {
 
     @Field("question_time")
     @JsonProperty("question_time")
-    private LocalDateTime questionTime = LocalDateTime.now();
+    private String questionTime = LocalDateTime.now().toString();
 
     @Field("pass_rate")
     @JsonProperty("pass_rate")
     private double passRate;
 
     // 五阶段使用的模式
-
+    @Field
+    private List<Pattern> patterns;
 }

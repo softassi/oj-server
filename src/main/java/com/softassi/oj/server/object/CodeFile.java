@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -23,7 +24,7 @@ import java.util.Date;
 public class CodeFile {
 
     @Id
-    private Integer id;
+    private String id;
 
     @Field
     private String filename;
@@ -36,5 +37,5 @@ public class CodeFile {
 
     @Field("upload_time")
     @JsonProperty("upload_time")
-    private Date uploadTime = new Date();
+    private String uploadTime = LocalDateTime.now().toString();
 }

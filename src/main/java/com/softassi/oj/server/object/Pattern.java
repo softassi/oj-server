@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
 public class Pattern {
 
     @Id
-    private Integer id;
+    private String id;
 
     @Field
     private String name;
@@ -54,7 +55,7 @@ public class Pattern {
 
     @Field("submit_time")
     @JsonProperty("submit_time")
-    private Date submitTime = new Date();
+    private LocalDateTime submitTime = LocalDateTime.now();
 
     @Field("use_count")
     @JsonProperty("use_count")
@@ -62,7 +63,6 @@ public class Pattern {
 
     @Field("last_use_time")
     @JsonProperty("last_use_time")
-    private Date lastUseTime = new Date();
-
+    private LocalDateTime lastUseTime = LocalDateTime.now();
 }
 

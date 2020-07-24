@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -24,7 +25,20 @@ public class User {
 
     @Field("create_time")
     @JsonProperty(value = "create_time")
-    private String createTime = new Date().toString();
+    private LocalDateTime createTime = LocalDateTime.now();
+
+    @Field("update_time")
+    @JsonProperty("update_time")
+    private LocalDateTime updateTime = LocalDateTime.now();
+
+    @Field
+    private String github;
+
+    @Field
+    private String email;
+
+    @Field
+    private String group;
 
     public User(String name) {
         this.name = name;
