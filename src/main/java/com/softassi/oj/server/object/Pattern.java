@@ -1,16 +1,15 @@
 package com.softassi.oj.server.object;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,6 +54,7 @@ public class Pattern {
 
     @Field("submit_time")
     @JsonProperty("submit_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime submitTime = LocalDateTime.now();
 
     @Field("use_count")
@@ -63,6 +63,7 @@ public class Pattern {
 
     @Field("last_use_time")
     @JsonProperty("last_use_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime lastUseTime = LocalDateTime.now();
 }
 

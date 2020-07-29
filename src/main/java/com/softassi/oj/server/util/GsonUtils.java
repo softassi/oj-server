@@ -16,6 +16,7 @@ public class GsonUtils {
     //线程安全的
     private static final Gson GSON;
     private static final Gson GSON_NULL; // 不过滤空值
+
     static {
         GSON = new GsonBuilder().enableComplexMapKeySerialization() //当Map的key为复杂对象时,需要开启该方法
 //                .serializeNulls() //当字段值为空或null时，依然对该字段进行转换
@@ -79,6 +80,7 @@ public class GsonUtils {
 
     /**
      * 转成list
+     *
      * @param gsonString
      * @param cls
      * @return
@@ -90,6 +92,7 @@ public class GsonUtils {
 
     /**
      * 转成list中有map的
+     *
      * @param gsonString
      * @return
      */
@@ -100,6 +103,7 @@ public class GsonUtils {
 
     /**
      * 转成map
+     *
      * @param gsonString
      * @return
      */

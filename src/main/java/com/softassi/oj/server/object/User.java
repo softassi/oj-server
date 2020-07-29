@@ -1,5 +1,6 @@
 package com.softassi.oj.server.object;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class User {
 
     @Id
     private String id;
-
+    
     @Field
     private String name;
 
@@ -28,10 +28,12 @@ public class User {
 
     @Field("create_time")
     @JsonProperty(value = "create_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime = LocalDateTime.now();
 
     @Field("update_time")
     @JsonProperty("update_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime = LocalDateTime.now();
 
     @Field

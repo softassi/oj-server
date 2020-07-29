@@ -1,15 +1,14 @@
 package com.softassi.oj.server.object;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @ClassName : Tag
@@ -29,9 +28,8 @@ public class Tag {
     @Field
     private String name;
 
-    // @Field
-    // private LocalDateTime test = LocalDateTime.now();
+    @Field
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime test = LocalDateTime.now();
 
-    // @Field
-    // private Date test2 = new Date();
 }

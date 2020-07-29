@@ -1,5 +1,6 @@
 package com.softassi.oj.server.object;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @ClassName : CodeFile
@@ -37,5 +37,6 @@ public class CodeFile {
 
     @Field("upload_time")
     @JsonProperty("upload_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime uploadTime = LocalDateTime.now();
 }
