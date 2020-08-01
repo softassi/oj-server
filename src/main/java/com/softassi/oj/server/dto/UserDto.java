@@ -1,56 +1,37 @@
-package com.softassi.oj.server.object;
+package com.softassi.oj.server.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Document(collection = "user")
-public class User {
+public class UserDto {
 
-    @Id
     private String id;
 
     // 学号
-    @Field
     private String sno;
 
     // 显示名称
-    @Field
     private String name;
 
-    @Field
     private String password;
 
-    @Field("create_time")
     @JsonProperty(value = "create_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime = LocalDateTime.now();
 
-    @Field("update_time")
     @JsonProperty("update_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime = LocalDateTime.now();
 
-    @Field
     private String github;
 
-    @Field
     private String email;
 
-    @Field
     private String group;
 
-    public User(String name) {
+    public UserDto(String name) {
         this.name = name;
     }
 }
