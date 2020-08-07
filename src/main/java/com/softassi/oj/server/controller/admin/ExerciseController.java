@@ -1,4 +1,4 @@
-package com.softassi.oj.server.controller;
+package com.softassi.oj.server.controller.admin;
 
 import com.softassi.oj.server.dto.ResultBody;
 import io.swagger.annotations.Api;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "题目管理接口")
 @RequestMapping("/exercise")
 public class ExerciseController {
-
 
     @RequestMapping("/save")
     @ApiOperation("保存一个标签")

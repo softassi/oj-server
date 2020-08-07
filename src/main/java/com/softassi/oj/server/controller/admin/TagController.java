@@ -1,4 +1,4 @@
-package com.softassi.oj.server.controller;
+package com.softassi.oj.server.controller.admin;
 
 import com.softassi.oj.server.dto.ResultBody;
 import com.softassi.oj.server.object.Tag;

@@ -33,6 +33,23 @@ public class ExerciseDto {
     @JsonProperty("question_setter")
     private String questionSetter;
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("ExerciseDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", desc='").append(desc).append('\'');
+        sb.append(", maxTime=").append(maxTime);
+        sb.append(", maxCpu=").append(maxCpu);
+        sb.append(", maxMemory=").append(maxMemory);
+        sb.append(", questionSetter='").append(questionSetter).append('\'');
+        sb.append(", questionTime=").append(questionTime);
+        sb.append(", passRate=").append(passRate);
+        sb.append(", patterns=").append(patterns);
+        sb.append('}');
+        return sb.toString();
+    }
+
     @JsonProperty("question_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime questionTime = LocalDateTime.now();
@@ -42,4 +59,84 @@ public class ExerciseDto {
 
     // 五阶段使用的模式
     private List<PatternDto> patterns;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public double getMaxTime() {
+        return maxTime;
+    }
+
+    public void setMaxTime(double maxTime) {
+        this.maxTime = maxTime;
+    }
+
+    public double getMaxCpu() {
+        return maxCpu;
+    }
+
+    public void setMaxCpu(double maxCpu) {
+        this.maxCpu = maxCpu;
+    }
+
+    public double getMaxMemory() {
+        return maxMemory;
+    }
+
+    public void setMaxMemory(double maxMemory) {
+        this.maxMemory = maxMemory;
+    }
+
+    public String getQuestionSetter() {
+        return questionSetter;
+    }
+
+    public void setQuestionSetter(String questionSetter) {
+        this.questionSetter = questionSetter;
+    }
+
+    public LocalDateTime getQuestionTime() {
+        return questionTime;
+    }
+
+    public void setQuestionTime(LocalDateTime questionTime) {
+        this.questionTime = questionTime;
+    }
+
+    public double getPassRate() {
+        return passRate;
+    }
+
+    public void setPassRate(double passRate) {
+        this.passRate = passRate;
+    }
+
+    public List<PatternDto> getPatterns() {
+        return patterns;
+    }
+
+    public void setPatterns(List<PatternDto> patterns) {
+        this.patterns = patterns;
+    }
 }
