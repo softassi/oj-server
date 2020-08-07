@@ -4,7 +4,6 @@ import com.softassi.oj.server.dto.ResultBody;
 import com.softassi.oj.server.object.User;
 import com.softassi.oj.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +23,8 @@ public class UserController {
 
     @RequestMapping("/save")
     public ResultBody save() {
-        userService.save();
-        return ResultBody.success();
+        User save = userService.save();
+        return ResultBody.success(save);
     }
 
     @RequestMapping("/list")

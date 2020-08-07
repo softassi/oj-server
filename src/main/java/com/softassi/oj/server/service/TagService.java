@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /**
  * @ClassName : TagService
@@ -33,5 +34,10 @@ public class TagService {
         LocalDateTime parse = LocalDateTime.parse("2020-07-25 00:11:17", DATETIME);
         System.out.println(parse.getDayOfYear());
         return tag;
+    }
+
+    public List<Tag> list() {
+        List<Tag> tagList = tagRepository.findAll();
+        return tagList;
     }
 }

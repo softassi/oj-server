@@ -19,9 +19,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void save() {
+    public User save() {
         User user = new User("cy");
         userRepository.save(user);
+        return user;
     }
 
     public List<User> list() {
