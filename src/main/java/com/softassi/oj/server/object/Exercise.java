@@ -28,6 +28,9 @@ public class Exercise {
     @Id
     private String id;
 
+    @Field("exercise_no")
+    private Integer exerciseNo;
+    
     @Field
     private String title;
 

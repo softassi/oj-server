@@ -38,14 +38,32 @@ public class ExerciseController {
         return ResultBody.success(save);
     }
 
-    @GetMapping(value = "/{id}")
-    @ApiOperation("得到一个习题")
+    @GetMapping(value = "/get/{no}")
+    @ApiOperation("通过题号得到一个习题")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "题目id", paramType = "path")
     })
-    public ResultBody get(@PathVariable("id") String id) {
-        return ResultBody.success();
+    public ResultBody get(@PathVariable("no") Integer no) {
+        ExerciseDto exerciseDto = exerciseService.getByNo(no);
+        if (exerciseDto == null) {
+            ResultBody.error("没有改习题");
+        }
+        return ResultBody.success(exerciseDto);
     }
+
+    @GetMapping(value = "/getByTitle")
+    @ApiOperation("通过题号得到一个习题")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "题目id", paramType = "path")
+    })
+    public ResultBody getByTitle(String title) {
+        ExerciseDto exerciseDto = exerciseService.getByTitle(title);
+        if (exerciseDto == null) {
+            ResultBody.error("没有改习题");
+        }
+        return ResultBody.success(exerciseDto);
+    }
+
 
     @GetMapping("/list")
     public ResultBody list(@RequestBody PageDto pageDto) {
@@ -53,7 +71,18 @@ public class ExerciseController {
         List<Exercise> list = exerciseService.list(pageDto);
         return ResultBody.success(list);
     }
-    
 
+    @GetMapping("/all")
+    @ApiOperation("得到全部的习题")
+    public ResultBody all() {
+        List<ExerciseDto> list = exerciseService.all();
+        return ResultBody.success(list);
+    }
+
+    @PostMapping("/update")
+    public ResultBody update(@RequestBody ExerciseDto exerciseDto) {
+        return ResultBody.success();
+    }
 }
+
 

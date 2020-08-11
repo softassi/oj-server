@@ -2,6 +2,7 @@ package com.softassi.oj.server.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,6 +17,9 @@ import java.util.List;
 public class ExerciseDto {
 
     private String id;
+
+    @Field("exercise_no")
+    private Integer exerciseNo;
 
     private String title;
 
@@ -37,6 +41,7 @@ public class ExerciseDto {
     public String toString() {
         final StringBuffer sb = new StringBuffer("ExerciseDto{");
         sb.append("id='").append(id).append('\'');
+        sb.append(", exerciseNo=").append(exerciseNo);
         sb.append(", title='").append(title).append('\'');
         sb.append(", desc='").append(desc).append('\'');
         sb.append(", maxTime=").append(maxTime);
@@ -48,6 +53,14 @@ public class ExerciseDto {
         sb.append(", patterns=").append(patterns);
         sb.append('}');
         return sb.toString();
+    }
+
+    public Integer getExerciseNo() {
+        return exerciseNo;
+    }
+
+    public void setExerciseNo(Integer exerciseNo) {
+        this.exerciseNo = exerciseNo;
     }
 
     @JsonProperty("question_time")

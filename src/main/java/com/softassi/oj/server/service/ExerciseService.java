@@ -26,6 +26,7 @@ public class ExerciseService {
     private ExerciseRepository exerciseRepository;
 
     public Exercise save(ExerciseDto exerciseDto) {
+        // todo 应该要自动计算题号
         Exercise copy = CopyUtil.copy(exerciseDto, Exercise.class);
         Exercise result = exerciseRepository.save(copy);
         return result;
@@ -50,4 +51,28 @@ public class ExerciseService {
     public void submit(Exercise exercise) {
 
     }
+
+    public List<ExerciseDto> all() {
+        List<Exercise> all = exerciseRepository.findAll();
+        List<ExerciseDto> exerciseDtos = CopyUtil.copyList(all, ExerciseDto.class);
+        return exerciseDtos;
+    }
+
+    public void update(ExerciseDto exerciseDto) {
+        Exercise copy = CopyUtil.copy(exerciseDto, Exercise.class);
+        exerciseRepository.insert(copy);
+    }
+
+    public ExerciseDto getByNo(Integer no) {
+        Exercise result = exerciseRepository.findByExerciseNo(no);
+        ExerciseDto exerciseDto = CopyUtil.copy(result, ExerciseDto.class);
+        return exerciseDto;
+    }
+
+    public ExerciseDto getByTitle(String title) {
+        Exercise result = exerciseRepository.findByTitleContaining(title);
+        ExerciseDto exerciseDto = CopyUtil.copy(result, ExerciseDto.class);
+        return exerciseDto;
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.softassi.oj.server.config;
 
-import com.softassi.oj.server.util.LoginInterceptor;
+import com.softassi.oj.server.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

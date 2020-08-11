@@ -23,6 +23,7 @@ public class OtherController {
 
     @RequestMapping("/upload")
     public ResultBody upload(@RequestParam("file") MultipartFile file) {
+
         System.out.println(file.getOriginalFilename());
         if (file.isEmpty()) {
             return ResultBody.error("file is empty");
@@ -30,11 +31,14 @@ public class OtherController {
         String originalFilename = file.getOriginalFilename();
         System.out.println(originalFilename);
         String filePath = "D:\\my-test\\";
+        File file1 = new File(filePath);
+        if (file1.exists()) {
+            file1.mkdir();
+        }
+
         String path = filePath + originalFilename;
         File dest = new File(path);
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdir();
-        }
+        
         try {
             file.transferTo(dest);
         } catch (IOException e) {

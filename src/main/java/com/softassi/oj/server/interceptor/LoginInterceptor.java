@@ -1,17 +1,15 @@
-package com.softassi.oj.server.util;
+package com.softassi.oj.server.interceptor;
 
-import org.omg.PortableInterceptor.Interceptor;
+import com.softassi.oj.server.util.NeedLogin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.HandlerMethod;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
@@ -26,9 +24,9 @@ public class LoginInterceptor implements HandlerInterceptor {
             System.out.println("cat cast handler to HandlerMethod.class");
             return true;
         }
-        HandlerMethod method = (HandlerMethod)handler;
+        HandlerMethod method = (HandlerMethod) handler;
         NeedLogin needLogin = (NeedLogin) method.getMethodAnnotation(NeedLogin.class);
-        if (needLogin == null){
+        if (needLogin == null) {
             return true;
         }
         return true;
