@@ -19,13 +19,13 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.minio:minio:7.1.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'com.alibaba:fastjson:1.2.62'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
-
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
