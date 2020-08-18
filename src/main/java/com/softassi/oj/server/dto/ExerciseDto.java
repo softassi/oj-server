@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @Date: 2020-07-23 14:50
  */
 
-public class ExerciseDto {
+public class ExerciseDto implements Serializable {
 
     private String id;
 

@@ -2,6 +2,7 @@ package com.softassi.oj.server.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  * @Date: 2020-07-23 15:36
  */
 
-public class TagDto {
+public class TagDto implements Serializable {
 
     private String id;
 

@@ -2,9 +2,10 @@ package com.softassi.oj.server.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CreateUser {
+public class CreateUser implements Serializable {
 
     private String name;
 

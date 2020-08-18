@@ -3,6 +3,7 @@ package com.softassi.oj.server.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  * @Author : cybersa
  * @Date: 2020-07-23 15:28
  */
-public class CodeFileDto {
+public class CodeFileDto implements Serializable {
 
     private String id;
 

@@ -3,6 +3,7 @@ package com.softassi.oj.server.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @Author : cybersa
  * @Date: 2020-07-23 15:07
  */
-public class PatternDto {
+public class PatternDto implements Serializable {
 
     private String id;
 
