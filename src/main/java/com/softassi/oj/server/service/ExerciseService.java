@@ -33,8 +33,8 @@ public class ExerciseService {
     }
 
     public Exercise getById(String id) {
-        Optional<Exercise> byId = exerciseRepository.findById(id);
-        return byId.orElse(null);
+        Optional<Exercise> exercise = exerciseRepository.findById(id);
+        return exercise.orElse(null);
     }
 
     public List<Exercise> list(PageDto pageDto) {
@@ -73,6 +73,10 @@ public class ExerciseService {
         Exercise result = exerciseRepository.findByTitleContaining(title);
         ExerciseDto exerciseDto = CopyUtil.copy(result, ExerciseDto.class);
         return exerciseDto;
+    }
+
+    public void delete(String id) {
+        exerciseRepository.deleteById(id);
     }
 
 }

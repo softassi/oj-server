@@ -1,8 +1,13 @@
 package com.softassi.oj.server.service;
 
+import com.softassi.oj.server.dto.PageDto;
+import com.softassi.oj.server.dto.TagDto;
 import com.softassi.oj.server.object.Tag;
 import com.softassi.oj.server.repository.TagRepository;
+import com.softassi.oj.server.util.CopyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -36,8 +41,30 @@ public class TagService {
         return tag;
     }
 
-    public List<Tag> list() {
-        List<Tag> tagList = tagRepository.findAll();
-        return tagList;
+    public List<TagDto> list(PageDto pageDto) {
+        PageRequest of = PageRequest.of(pageDto.getPage(), pageDto.getSize());
+        Page<Tag> tagPage = tagRepository.findAll(of);
+        List<Tag> content = tagPage.getContent();
+        return CopyUtil.copyList(content, TagDto.class);
+    }
+    public List<TagDto> all() {
+        List<Tag> content = tagRepository.findAll();
+        return CopyUtil.copyList(content, TagDto.class);
+    }
+
+    public TagDto update(TagDto tagDto) {
+        Tag copy = CopyUtil.copy(tagDto, Tag.class);
+        Tag save = tagRepository.save(copy);
+        return CopyUtil.copy(save, TagDto.class);
+    }
+
+    public TagDto save(TagDto tagDto) {
+        Tag copy = CopyUtil.copy(tagDto, Tag.class);
+        Tag save = tagRepository.save(copy);
+        return CopyUtil.copy(save, TagDto.class);
+    }
+
+    public void delete(String id) {
+        tagRepository.deleteById(id);
     }
 }

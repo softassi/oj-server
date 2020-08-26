@@ -19,7 +19,7 @@ public class ExerciseDto implements Serializable {
 
     private String id;
 
-    @Field("exercise_no")
+    @JsonProperty("exercise_no")
     private Integer exerciseNo;
 
     private String title;

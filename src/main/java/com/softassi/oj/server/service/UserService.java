@@ -1,11 +1,17 @@
 package com.softassi.oj.server.service;
 
+import com.softassi.oj.server.dto.PageDto;
+import com.softassi.oj.server.dto.UserDto;
 import com.softassi.oj.server.object.User;
 import com.softassi.oj.server.repository.UserRepository;
+import com.softassi.oj.server.util.CopyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @ClassName : UserService
@@ -19,13 +25,35 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     public User save() {
         User user = new User("cy");
         userRepository.save(user);
         return user;
     }
+    public UserDto save(UserDto userDto) {
+        User copy = CopyUtil.copy(userDto, User.class);
+        User save = userRepository.save(copy);
+        return CopyUtil.copy(save, UserDto.class);
+    }
 
-    public List<User> list() {
+    public List<User> all() {
         return userRepository.findAll();
+    }
+
+    public UserDto get(String id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        return userOptional.map(user -> CopyUtil.copy(user, UserDto.class)).orElse(null);
+    }
+
+    public List<UserDto> list(PageDto pageDto) {
+        PageRequest of = PageRequest.of(pageDto.getPage(), pageDto.getSize());
+        Page<User> userPage = userRepository.findAll(of);
+        List<User> content = userPage.getContent();
+        return CopyUtil.copyList(content, UserDto.class);
+    }
+
+    public void delete(String id) {
+        userRepository.deleteById(id);
     }
 }

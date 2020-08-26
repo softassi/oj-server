@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "题目管理接口")
-@RequestMapping("/exercise")
+@RequestMapping("/admin/exercise")
 public class ExerciseController {
     private static final Logger LOG = LoggerFactory.getLogger(ExerciseController.class);
 
@@ -81,6 +81,12 @@ public class ExerciseController {
 
     @PostMapping("/update")
     public ResultBody update(@RequestBody ExerciseDto exerciseDto) {
+        return ResultBody.success();
+    }
+
+    @RequestMapping("/delete/{id}")
+    public ResultBody delete(@PathVariable("id") String id) {
+        exerciseService.delete(id);
         return ResultBody.success();
     }
 }

@@ -1,10 +1,13 @@
 package com.softassi.oj.server.controller.admin;
 
 import com.softassi.oj.server.dto.PageDto;
+import com.softassi.oj.server.dto.PatternDto;
 import com.softassi.oj.server.dto.ResultBody;
 import com.softassi.oj.server.dto.TagDto;
 import com.softassi.oj.server.object.Tag;
+import com.softassi.oj.server.service.PatternService;
 import com.softassi.oj.server.service.TagService;
+import com.softassi.oj.server.util.ValidatorUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -24,49 +27,55 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "标签管理接口")
-@RequestMapping("/admin/tag")
-public class TagController {
-    private static final Logger LOG = LoggerFactory.getLogger(TagController.class);
+@RequestMapping("/admin/pattern")
+public class PatternController {
+    private static final Logger LOG = LoggerFactory.getLogger(PatternController.class);
 
     @Autowired
-    private TagService tagService;
+    private PatternService patternService;
 
     @RequestMapping("/save")
-    @ApiOperation("保存一个标签")
-    public ResultBody save(@RequestBody TagDto tagDto) {
-        TagDto save = tagService.save(tagDto);
+    @ApiOperation("保存一个模式")
+    public ResultBody save(@RequestBody PatternDto patternDto) {
+        ValidatorUtils.require(patternDto.getId(), "模式ID");
+
+        PatternDto save = patternService.save(patternDto);
         return ResultBody.success(save);
     }
 
     @GetMapping(value = "/get")
-    @ApiOperation("得到一个标签")
+    @ApiOperation("得到一个模式")
     @ApiImplicitParams(
             @ApiImplicitParam(name = "name", value = "用户标签名")
     )
     public ResultBody get(String name) {
         LOG.info("get()");
-        Tag tag = tagService.get();
-        return ResultBody.success(tag);
+        PatternDto patternDto = patternService.get(name);
+        return ResultBody.success(patternDto);
     }
 
     @GetMapping("/list")
     public ResultBody list(@RequestBody PageDto pageDto) {
         LOG.info("page:{}, size:{}", pageDto.getPage(), pageDto.getSize());
-        List<TagDto> list = tagService.list(pageDto);
+        List<PatternDto> list = patternService.list(pageDto);
         return ResultBody.success(list);
     }
 
     @GetMapping("/all")
     public ResultBody all() {
-        List<TagDto> list = tagService.all();
+        List<PatternDto> list = patternService.all();
         return ResultBody.success(list);
     }
 
-
-
     @PostMapping("/update")
-    public ResultBody update(@RequestBody TagDto tagDto) {
-        TagDto update = tagService.update(tagDto);
+    public ResultBody update(@RequestBody PatternDto patternDto) {
+        PatternDto update = patternService.update(patternDto);
         return ResultBody.success(update);
+    }
+
+    @RequestMapping("/delete/{id}")
+    public ResultBody delete(@PathVariable("id") String id) {
+        patternService.delete(id);
+        return ResultBody.success();
     }
 }
