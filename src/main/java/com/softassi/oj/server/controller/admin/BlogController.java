@@ -7,6 +7,7 @@ import com.softassi.oj.server.dto.BlogDto;
 import com.softassi.oj.server.object.Blog;
 import com.softassi.oj.server.service.BlogService;
 import com.softassi.oj.server.service.BlogService;
+import com.softassi.oj.server.util.ValidatorUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import java.util.List;
  * @Date: 2020-07-22 22:38
  */
 @RestController(value = "adminBlogController")
+@RequestMapping("/admin/blog")
 @Slf4j
 public class BlogController {
 
@@ -53,11 +55,19 @@ public class BlogController {
         return ResultBody.success(blogDto);
     }
 
-
-
     @RequestMapping("/delete/{id}")
     public ResultBody delete(@PathVariable("id") String id) {
+        ValidatorUtils.require(id, "博客ID");
+
         blogService.delete(id);
         return ResultBody.success();
+    }
+
+    @RequestMapping("/update")
+    public ResultBody update(@RequestBody BlogDto blogDto) {
+        ValidatorUtils.require(blogDto.getId(), "博客ID");
+
+        BlogDto update = blogService.update(blogDto);
+        return ResultBody.success(update);
     }
 }

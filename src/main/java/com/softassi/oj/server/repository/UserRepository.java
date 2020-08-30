@@ -11,13 +11,7 @@ import java.util.stream.Stream;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
-    @Override
-    List<User> findAll();
-
     User findUserById(String id);
 
     User findUserByName(String name);
-
-    @Override
-    <S extends User> S save(S entity);
 }

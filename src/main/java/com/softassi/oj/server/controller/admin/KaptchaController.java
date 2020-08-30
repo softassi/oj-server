@@ -27,7 +27,9 @@ public class KaptchaController {
     public RedisTemplate redisTemplate;
 
     @GetMapping("/image-code/{imageCodeToken}")
-    public void imageCode(@PathVariable(value = "imageCodeToken") String imageCodeToken, HttpServletRequest request, HttpServletResponse httpServletResponse) throws Exception {
+    public void imageCode(@PathVariable(value = "imageCodeToken") String imageCodeToken,
+                          HttpServletRequest request,
+                          HttpServletResponse httpServletResponse) throws Exception {
         ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
         try {
             // 生成验证码字符串

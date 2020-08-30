@@ -55,9 +55,19 @@ public class BlogService {
         return BlogDtos;
     }
 
-    public void update(BlogDto BlogDto) {
-        Blog copy = CopyUtil.copy(BlogDto, Blog.class);
-        blogRepository.insert(copy);
+    public BlogDto update(BlogDto blogDto) {
+        String blogId = blogDto.getId();
+        Optional<Blog> blogOptional = blogRepository.findById(blogId);
+        if (blogOptional.isPresent()) {
+            Blog blog = blogOptional.get();
+            blog.setContent(blogDto.getContent());
+            blogRepository.save(blog);
+            return CopyUtil.copy(blog, BlogDto.class);
+        }
+        else {
+            // todo
+        }
+        return null;
     }
 
     public void delete(String id) {

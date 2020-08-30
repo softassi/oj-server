@@ -56,4 +56,24 @@ public class UserService {
     public void delete(String id) {
         userRepository.deleteById(id);
     }
+
+    public void update(UserDto userDto) {
+        User copy = CopyUtil.copy(userDto, User.class);
+        userRepository.save(copy);
+    }
+
+    public UserDto reset(UserDto userDto) {
+        String userId = userDto.getId();
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setPassword(userDto.getPassword());
+            userRepository.save(user);
+            return CopyUtil.copy(user, UserDto.class);
+        }
+        else {
+            // todo
+            throw new RuntimeException("错误");
+        }
+    }
 }

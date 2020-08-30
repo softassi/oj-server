@@ -51,7 +51,8 @@ public class UploadController {
             response.setCharacterEncoding("UTF-8");
             IOUtils.copy(fileInputStream, response.getOutputStream());
             return ResultBody.success();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResultBody.error("下载失败");
         }
     }
