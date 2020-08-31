@@ -1,5 +1,6 @@
 package com.softassi.oj.server.service;
 
+import com.softassi.oj.server.dto.LoginUserDto;
 import com.softassi.oj.server.dto.PageDto;
 import com.softassi.oj.server.dto.UserDto;
 import com.softassi.oj.server.object.User;
@@ -35,6 +36,20 @@ public class UserService {
         User copy = CopyUtil.copy(userDto, User.class);
         User save = userRepository.save(copy);
         return CopyUtil.copy(save, UserDto.class);
+    }
+
+    public UserDto savePassword(UserDto userDto) {
+        Optional<User> userOptional = userRepository.findById(userDto.getId());
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setPassword(userDto.getPassword());
+            userRepository.save(user);
+            return CopyUtil.copy(user, UserDto.class);
+        }
+        else {
+            // todo
+        }
+        return null;
     }
 
     public List<User> all() {
@@ -74,6 +89,25 @@ public class UserService {
         else {
             // todo
             throw new RuntimeException("错误");
+        }
+    }
+
+    /**
+     * 登陆
+     * @param userDto
+     */
+    public LoginUserDto login(UserDto userDto) {
+        User user = userRepository.findUserByName(userDto.getName());
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+        else {
+            if (user.getPassword().equals(userDto.getPassword())) {
+                return CopyUtil.copy(user, LoginUserDto.class);
+            }
+            else {
+                throw new RuntimeException("用户名或密码错误");
+            }
         }
     }
 }

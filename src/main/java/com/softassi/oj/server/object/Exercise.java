@@ -62,7 +62,12 @@ public class Exercise {
     @JsonProperty("pass_rate")
     private double passRate;
 
+    @Field("tag_id")
+    @JsonProperty("tag_id")
+    private String tagId;
+
     // 五阶段使用的模式
     @Field
     private List<Pattern> patterns;
+
 }

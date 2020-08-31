@@ -25,7 +25,7 @@ import java.util.List;
  * @Author : cybersa
  * @Date: 2020-07-24 11:17
  */
-@RestController
+@RestController("adminPatternController")
 @Api(tags = "标签管理接口")
 @RequestMapping("/admin/pattern")
 public class PatternController {

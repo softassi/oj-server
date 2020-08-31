@@ -9,7 +9,6 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@PropertySource("classpath:application-dev.properties")
 public class ServerApplication {
     private static final Logger LOG = LoggerFactory.getLogger(ServerApplication.class);
 

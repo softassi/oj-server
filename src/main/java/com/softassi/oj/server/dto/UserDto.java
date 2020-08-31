@@ -20,6 +20,45 @@ public class UserDto implements Serializable {
     @JsonIgnore
     private String password;
 
+    private String imageCodeToken;
+
+    private String imageCode;
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("UserDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", sno='").append(sno).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", imageCodeToken='").append(imageCodeToken).append('\'');
+        sb.append(", imageCode='").append(imageCode).append('\'');
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", github='").append(github).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", group='").append(group).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public String getImageCode() {
+
+        return imageCode;
+    }
+
+    public void setImageCode(String imageCode) {
+        this.imageCode = imageCode;
+    }
+
+    public String getImageCodeToken() {
+        return imageCodeToken;
+    }
+
+    public void setImageCodeToken(String imageCodeToken) {
+        this.imageCodeToken = imageCodeToken;
+    }
+
     @JsonProperty(value = "create_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime = LocalDateTime.now();
@@ -33,22 +72,6 @@ public class UserDto implements Serializable {
     private String email;
 
     private String group;
-
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("UserDto{");
-        sb.append("id='").append(id).append('\'');
-        sb.append(", sno='").append(sno).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", github='").append(github).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", group='").append(group).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
 
     public String getId() {
         return id;

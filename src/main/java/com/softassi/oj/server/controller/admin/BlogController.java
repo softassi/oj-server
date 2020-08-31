@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.service.ApiListing;
 
+import javax.xml.transform.Result;
 import java.util.List;
 
 /**
@@ -58,7 +59,6 @@ public class BlogController {
     @RequestMapping("/delete/{id}")
     public ResultBody delete(@PathVariable("id") String id) {
         ValidatorUtils.require(id, "博客ID");
-
         blogService.delete(id);
         return ResultBody.success();
     }
@@ -69,5 +69,11 @@ public class BlogController {
 
         BlogDto update = blogService.update(blogDto);
         return ResultBody.success(update);
+    }
+
+    @RequestMapping("/list-by-title/{title}")
+    public ResultBody listByTitle(@PathVariable("title") String title) {
+        blogService.listByTitle(title);
+        return ResultBody.success();
     }
 }

@@ -5,6 +5,7 @@ import com.softassi.oj.server.dto.PageDto;
 import com.softassi.oj.server.dto.ResultBody;
 import com.softassi.oj.server.object.Exercise;
 import com.softassi.oj.server.service.ExerciseService;
+import com.softassi.oj.server.util.ValidatorUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -12,8 +13,10 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.Result;
 import java.util.List;
 
 /**
@@ -22,7 +25,7 @@ import java.util.List;
  * @Author : cybersa
  * @Date: 2020-07-24 11:17
  */
-@RestController
+@RestController("adminExerciseController")
 @Api(tags = "题目管理接口")
 @RequestMapping("/admin/exercise")
 public class ExerciseController {
@@ -81,12 +84,31 @@ public class ExerciseController {
 
     @PostMapping("/update")
     public ResultBody update(@RequestBody ExerciseDto exerciseDto) {
+        exerciseService.update(exerciseDto);
         return ResultBody.success();
     }
 
     @RequestMapping("/delete/{id}")
     public ResultBody delete(@PathVariable("id") String id) {
         exerciseService.delete(id);
+        return ResultBody.success();
+    }
+
+    @GetMapping("/list-by-tag/{tagId}")
+    public ResultBody listByTag(@PathVariable("tagId") String tagId) {
+        ValidatorUtils.require(tagId, "标签ID");
+
+        LOG.info("list-by-tag:{}", tagId);
+        List<ExerciseDto> exerciseDtos = exerciseService.listByTag(tagId);
+        return ResultBody.success(exerciseDtos);
+    }
+
+    @PostMapping("update-tag")
+    public ResultBody updateTag(@RequestBody ExerciseDto exerciseDto) {
+        ValidatorUtils.require(exerciseDto.getId(), "习题ID");
+        ValidatorUtils.require(exerciseDto.getTagId(), "习题标签ID");
+
+        exerciseService.updateTag(exerciseDto);
         return ResultBody.success();
     }
 }

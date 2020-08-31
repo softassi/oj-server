@@ -74,4 +74,8 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
+    public List<BlogDto> listByTitle(String title) {
+        List<Blog> blogList = blogRepository.findAllByTitleLike(title);
+        return CopyUtil.copyList(blogList, BlogDto.class);
+    }
 }

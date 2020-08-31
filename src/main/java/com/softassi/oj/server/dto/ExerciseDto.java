@@ -38,6 +38,9 @@ public class ExerciseDto implements Serializable {
     @JsonProperty("question_setter")
     private String questionSetter;
 
+    @JsonProperty("tag_id")
+    private String tagId;
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("ExerciseDto{");
@@ -49,11 +52,20 @@ public class ExerciseDto implements Serializable {
         sb.append(", maxCpu=").append(maxCpu);
         sb.append(", maxMemory=").append(maxMemory);
         sb.append(", questionSetter='").append(questionSetter).append('\'');
+        sb.append(", tagId='").append(tagId).append('\'');
         sb.append(", questionTime=").append(questionTime);
         sb.append(", passRate=").append(passRate);
         sb.append(", patterns=").append(patterns);
         sb.append('}');
         return sb.toString();
+    }
+
+    public String getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(String tagId) {
+        this.tagId = tagId;
     }
 
     public Integer getExerciseNo() {

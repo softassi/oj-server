@@ -23,17 +23,28 @@ public class LoginUserDto implements Serializable {
 
     private String group;
 
+    private String token;
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("UserDto{");
+        final StringBuffer sb = new StringBuffer("LoginUserDto{");
         sb.append("id='").append(id).append('\'');
         sb.append(", sno='").append(sno).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", github='").append(github).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", group='").append(group).append('\'');
+        sb.append(", token='").append(token).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getId() {

@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-public class Auth {
+@RequestMapping("/auth")
+public class AuthController {
+
     @Autowired
     UserRepository userRepository;
 
@@ -28,18 +30,19 @@ public class Auth {
     public User getUserByName(String name){
         return userRepository.findUserByName(name);
     }
+
     @GetMapping("/all")
     public List<User> getUsers(){
         return userRepository.findAll();
     }
 
-    @PutMapping("/")
+    @PutMapping("/create")
     public User createUser(@RequestBody CreateUser user){
         // return userRepository.save(new User(null,user.getName(),user.getCreateTime()));
         return new User();
     }
 
-    @PostMapping("/")
+    @PostMapping("/fix")
     public User fixUser(@RequestBody FixUser user){
         User user1 = userRepository.findUserByName(user.getName());
         user1.setCreateTime(LocalDateTime.now());
