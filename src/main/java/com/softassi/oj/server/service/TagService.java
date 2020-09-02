@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @ClassName : TagService
@@ -34,11 +35,23 @@ public class TagService {
 
     public Tag get() {
         Tag tag = tagRepository.findByName("递归");
-        System.out.println(tag.getTest().toString());
         DateTimeFormatter DATETIME = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime parse = LocalDateTime.parse("2020-07-25 00:11:17", DATETIME);
         System.out.println(parse.getDayOfYear());
         return tag;
+    }
+
+    public TagDto get(String id) {
+        Optional<Tag> tagOptional = tagRepository.findById(id);
+        if (tagOptional.isPresent()) {
+            Tag tag = tagOptional.get();
+            return CopyUtil.copy(tag, TagDto.class);
+        }
+        else {
+            // todo
+        }
+
+        return null;
     }
 
     public List<TagDto> list(PageDto pageDto) {

@@ -1,19 +1,14 @@
-package com.softassi.oj.server.controller.admin;
+package com.softassi.oj.server.controller.web;
 
 import com.softassi.oj.server.dto.BlogDto;
 import com.softassi.oj.server.dto.PageDto;
 import com.softassi.oj.server.dto.ResultBody;
-import com.softassi.oj.server.dto.BlogDto;
-import com.softassi.oj.server.object.Blog;
-import com.softassi.oj.server.service.BlogService;
 import com.softassi.oj.server.service.BlogService;
 import com.softassi.oj.server.util.ValidatorUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.ApiListing;
 
-import javax.xml.transform.Result;
 import java.util.List;
 
 /**
@@ -22,8 +17,8 @@ import java.util.List;
  * @Author : cybersa
  * @Date: 2020-07-22 22:38
  */
-@RestController(value = "adminBlogController")
-@RequestMapping("/admin/blog")
+@RestController(value = "webBlogController")
+@RequestMapping("/web/blog")
 @Slf4j
 public class BlogController {
 

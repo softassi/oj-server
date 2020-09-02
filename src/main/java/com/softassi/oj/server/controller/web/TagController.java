@@ -1,4 +1,4 @@
-package com.softassi.oj.server.controller.admin;
+package com.softassi.oj.server.controller.web;
 
 import com.softassi.oj.server.dto.PageDto;
 import com.softassi.oj.server.dto.ResultBody;
@@ -22,9 +22,9 @@ import java.util.List;
  * @Author : cybersa
  * @Date: 2020-07-24 11:17
  */
-@RestController("adminTagController")
+@RestController("webTagController")
 @Api(tags = "标签管理接口")
-@RequestMapping("/admin/tag")
+@RequestMapping("/web/tag")
 public class TagController {
     private static final Logger LOG = LoggerFactory.getLogger(TagController.class);
 

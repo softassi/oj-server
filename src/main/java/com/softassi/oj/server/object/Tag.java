@@ -1,6 +1,7 @@
 package com.softassi.oj.server.object;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,8 +29,14 @@ public class Tag {
     @Field
     private String name;
 
-    @Field
+    @Field("create_time")
+    @JsonProperty("create_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime test = LocalDateTime.now();
+    private LocalDateTime createTime = LocalDateTime.now();
+
+    @Field("update_time")
+    @JsonProperty("update_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updateTime = LocalDateTime.now();
 
 }

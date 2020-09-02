@@ -28,6 +28,4 @@ public class ClassUser {
     @Field("user_id")
     private String userId;
 
-
-
 }

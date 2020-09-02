@@ -33,7 +33,11 @@ public class BlogDto implements Serializable {
     @JsonProperty("user_id")
     private String userId;
 
-    @JsonProperty("realease_time")
+    @JsonProperty("release_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime realeaseTime = LocalDateTime.now();
+    private LocalDateTime releaseTime = LocalDateTime.now();
+
+    @JsonProperty("update_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updateTime = LocalDateTime.now();
 }

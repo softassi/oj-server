@@ -2,17 +2,14 @@ package com.softassi.oj.server.controller;
 
 import com.softassi.oj.server.dto.CreateUser;
 import com.softassi.oj.server.dto.FixUser;
-import com.softassi.oj.server.error.BizException;
+import com.softassi.oj.server.exception.BizException;
 import com.softassi.oj.server.object.User;
 import com.softassi.oj.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/auth")

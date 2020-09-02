@@ -22,10 +22,10 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.softassi.oj.server.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("SpringBoot整合Swagger")
-                        .description("SpringBoot整合Swagger，详细信息......")
+                        .title("福大oj-server")
+                        .description("福大oj后台")
                         .version("0.1")
-                        .contact(new Contact("联系人", "blog.csdn.net", "aaa@gmail.com"))
+                        .contact(new Contact("总之就是非常困", "https://github.com/cunkoulaocai", "1184016190@qq.com"))
                         .license("The Apache License")
                         .licenseUrl("http://www.baidu.com")
                         .build());

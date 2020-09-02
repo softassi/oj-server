@@ -36,8 +36,13 @@ public class Blog {
     @Field("user_id")
     private String userId;
 
-    @Field("realease_time")
-    @JsonProperty("realease_time")
+    @Field("release_time")
+    @JsonProperty("release_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime realeaseTime = LocalDateTime.now();
+    private LocalDateTime releaseTime = LocalDateTime.now();
+
+    @Field("update_time")
+    @JsonProperty("update_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updateTime = LocalDateTime.now();
 }

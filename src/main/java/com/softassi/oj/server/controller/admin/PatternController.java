@@ -49,11 +49,17 @@ public class PatternController {
             @ApiImplicitParam(name = "name", value = "用户标签名")
     )
     public ResultBody get(String name) {
-        LOG.info("get()");
-        PatternDto patternDto = patternService.get(name);
+        ValidatorUtils.require(name, "用户名");
+        PatternDto patternDto = patternService.getByName(name);
         return ResultBody.success(patternDto);
     }
 
+    @GetMapping("/get/{id}")
+    public ResultBody getById(@PathVariable String id) {
+        ValidatorUtils.require(id, "模式ID");
+        PatternDto patternDto = patternService.get(id);
+        return ResultBody.success(patternDto);
+    }
     @GetMapping("/list")
     public ResultBody list(@RequestBody PageDto pageDto) {
         LOG.info("page:{}, size:{}", pageDto.getPage(), pageDto.getSize());
@@ -69,12 +75,15 @@ public class PatternController {
 
     @PostMapping("/update")
     public ResultBody update(@RequestBody PatternDto patternDto) {
+        ValidatorUtils.require(patternDto.getId(), "模式ID");
+
         PatternDto update = patternService.update(patternDto);
         return ResultBody.success(update);
     }
 
     @RequestMapping("/delete/{id}")
     public ResultBody delete(@PathVariable("id") String id) {
+        ValidatorUtils.require(id, "模式ID");
         patternService.delete(id);
         return ResultBody.success();
     }

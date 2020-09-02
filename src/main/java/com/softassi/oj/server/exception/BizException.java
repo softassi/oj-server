@@ -1,4 +1,4 @@
-package com.softassi.oj.server.error;
+package com.softassi.oj.server.exception;
 
 import com.softassi.oj.server.util.BaseErrorInfoInterface;
 

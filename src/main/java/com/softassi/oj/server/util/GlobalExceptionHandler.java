@@ -2,7 +2,7 @@ package com.softassi.oj.server.util;
 
 
 import com.softassi.oj.server.dto.ResultBody;
-import com.softassi.oj.server.error.BizException;
+import com.softassi.oj.server.exception.BizException;
 import com.softassi.oj.server.exception.ValidatorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

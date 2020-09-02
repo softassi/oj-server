@@ -10,10 +10,7 @@ import com.softassi.oj.server.service.UserService;
 import com.softassi.oj.server.util.ValidatorUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,23 +30,23 @@ public class EnvironmentController {
 
     @RequestMapping("/save")
     public ResultBody save(@RequestBody EnvironmentDto environmentDto) {
-
+        ValidatorUtils.require(environmentDto.getId(), "环境ID");
         EnvironmentDto save = environmentService.save(environmentDto);
         return ResultBody.success(save);
     }
 
-    @RequestMapping("/all")
+    @GetMapping("/all")
     public ResultBody all() {
         List<EnvironmentDto> all = environmentService.all();
         return ResultBody.success(all);
     }
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public ResultBody list(@RequestBody PageDto pageDto) {
         List<EnvironmentDto> list = environmentService.list(pageDto);
         return ResultBody.success(list);
     }
 
-    @RequestMapping("/get/{id}")
+    @GetMapping("/get/{id}")
     public ResultBody get(@PathVariable("id") String id) {
         ValidatorUtils.require(id, "环境ID");
 
@@ -64,4 +61,6 @@ public class EnvironmentController {
         environmentService.delete(id);
         return ResultBody.success();
     }
+
+
 }

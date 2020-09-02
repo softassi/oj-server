@@ -43,18 +43,18 @@ public class UserController {
         return ResultBody.success(save);
     }
 
-    @RequestMapping("/all")
+    @GetMapping("/all")
     public ResultBody all() {
         List<User> users = userService.all();
         return ResultBody.success(users);
     }
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public ResultBody list(@RequestBody PageDto pageDto) {
         List<UserDto> list = userService.list(pageDto);
         return ResultBody.success(list);
     }
 
-    @RequestMapping("/get/{id}")
+    @GetMapping("/get/{id}")
     public ResultBody get(@PathVariable("id") String id) {
         UserDto userDto = userService.get(id);
         return ResultBody.success(userDto);

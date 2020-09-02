@@ -6,6 +6,7 @@ import com.softassi.oj.server.object.Blog;
 import com.softassi.oj.server.repository.BlogRepository;
 import com.softassi.oj.server.util.CopyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

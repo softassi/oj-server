@@ -30,9 +30,12 @@ public class TheClass {
     private String className;
 
     @Field("class_size")
+    @JsonProperty("class_size")
     private Long classSize;
 
     @Field("can_join_class")
+    @JsonProperty("can_join_class")
     private String canJoinClass;
+
 
 }

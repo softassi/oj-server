@@ -67,6 +67,11 @@ public class PatternService {
         throw new OJException(PatternExceptionEnum.PATTERN_NO_EXIST);
     }
 
+    public PatternDto getByName(String name) {
+        Pattern pattern = patternRepository.findByName(name);
+        return CopyUtil.copy(pattern, PatternDto.class);
+    }
+
     public List<PatternDto> list(PageDto pageDto) {
         PageRequest of = PageRequest.of(pageDto.getPage(), pageDto.getSize());
         Page<Pattern> patternPage = patternRepository.findAll(of);

@@ -1,4 +1,4 @@
-package com.softassi.oj.server.controller;
+package com.softassi.oj.server.controller.web;
 
 import com.softassi.oj.server.dto.PageDto;
 import com.softassi.oj.server.dto.ResultBody;
@@ -20,9 +20,11 @@ import java.util.List;
  * @Author : cybersa
  * @Date: 2020-07-22 22:38
  */
-@RestController
+@RestController("webUserController")
 @Slf4j
+@RequestMapping("/web/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -32,7 +34,7 @@ public class UserController {
         return ResultBody.success(save);
     }
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public ResultBody list(@RequestBody PageDto pageDto) {
         List<UserDto> list = userService.list(pageDto);
         return ResultBody.success(list);
@@ -44,7 +46,7 @@ public class UserController {
         return ResultBody.success(all);
     }
 
-    @RequestMapping("/get/{id}")
+    @GetMapping("/get/{id}")
     public ResultBody get(@PathVariable("id") String id) {
         UserDto userDto = userService.get(id);
         return ResultBody.success(userDto);
@@ -59,15 +61,18 @@ public class UserController {
     
     @RequestMapping("/update")
     public ResultBody update(@RequestBody UserDto userDto) {
+        ValidatorUtils.require(userDto.getId(), "用户ID");
+        log.info("update");
         userService.update(userDto);
-        return ResultBody.success();
+        return ResultBody.success(userDto);
     }
 
     @RequestMapping("/reset")
     public ResultBody reset(@RequestBody UserDto userDto) {
-        log.info("重置密码");
         ValidatorUtils.require(userDto.getId(), "用户ID");
         ValidatorUtils.require(userDto.getPassword(), "用户密码");
+
+        log.info("重置密码");
 
         UserDto reset = userService.reset(userDto);
         return ResultBody.success(reset);

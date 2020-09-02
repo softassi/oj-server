@@ -1,6 +1,8 @@
-package com.softassi.oj.server.controller.admin;
+package com.softassi.oj.server.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +19,16 @@ import java.io.ByteArrayOutputStream;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("/admin/kaptcha")
+@RequestMapping("/kaptcha")
+@Slf4j
 public class KaptchaController {
 
     @Resource(name = "getDefaultKaptcha")
     private DefaultKaptcha defaultKaptcha;
 
+    @Resource(name = "getWebKaptcha")
+    private DefaultKaptcha webKaptcha;
+    
     @Resource
     public RedisTemplate redisTemplate;
 
@@ -35,8 +41,6 @@ public class KaptchaController {
             // 生成验证码字符串
             String createText = defaultKaptcha.createText();
 
-            // 将生成的验证码放入会话缓存中，后续验证的时候用到
-            // request.getSession().setAttribute(imageCodeToken, createText);
             // 将生成的验证码放入redis缓存中，后续验证的时候用到
             redisTemplate.opsForValue().set(imageCodeToken, createText, 300, TimeUnit.SECONDS);
 
