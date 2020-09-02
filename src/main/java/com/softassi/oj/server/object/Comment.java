@@ -12,40 +12,35 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.time.LocalDateTime;
 
 /**
- * @ClassName : CodeFile
- * @Description :
+ * @ClassName : Comment
+ * @Description : 题目的评论,暂时没有设计楼中楼
  * @Author : cybersa
- * @Date: 2020-07-23 15:28
+ * @Date: 2020-08-24 23:16
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "codefile")
-public class CodeFile {
+@Document(collection = "comment")
+public class Comment {
 
     @Id
     private String id;
 
     @Field
-    private String filename;
-
-    @Field
     private String content;
 
-    @Field
-    private String filehash;
+    @Field("exercise_id")
+    @JsonProperty("exercise_id")
+    private String exerciseId;
 
-    @Field
-    private Long size;
 
-    @Field("upload_time")
-    @JsonProperty("upload_time")
+    @Field("user_id")
+    @JsonProperty("user_id")
+    private String userId;
+
+    @Field("release_time")
+    @JsonProperty("release_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime uploadTime = LocalDateTime.now();
-    
-    @Field("update_time")
-    @JsonProperty("update_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime = LocalDateTime.now();
+    private LocalDateTime releaseTime = LocalDateTime.now();
 
 }

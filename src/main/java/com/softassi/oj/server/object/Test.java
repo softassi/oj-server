@@ -10,42 +10,34 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * @ClassName : CodeFile
- * @Description :
+ * @ClassName : Blog
+ * @Description : 博客信息
  * @Author : cybersa
- * @Date: 2020-07-23 15:28
+ * @Date: 2020-08-24 23:16
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "codefile")
-public class CodeFile {
+@Document(collection = "test")
+public class Test {
 
     @Id
     private String id;
 
     @Field
-    private String filename;
+    private String title;
 
     @Field
     private String content;
 
     @Field
-    private String filehash;
+    private List<String> a = new ArrayList<>();
 
     @Field
-    private Long size;
-
-    @Field("upload_time")
-    @JsonProperty("upload_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime uploadTime = LocalDateTime.now();
-    
-    @Field("update_time")
-    @JsonProperty("update_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime = LocalDateTime.now();
+    private List<Tag> tags = new ArrayList<>();
 
 }

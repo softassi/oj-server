@@ -131,9 +131,7 @@ public class MinioUtils {
     public static InputStream getObject(String bucketName, String objectName) {
         try {
             return minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(objectName).build());
-        } catch (ErrorResponseException e) {
-            e.printStackTrace();
-        } catch (InsufficientDataException e) {
+        } catch (ErrorResponseException | InsufficientDataException e) {
             e.printStackTrace();
         } catch (InternalException e) {
             e.printStackTrace();
@@ -167,5 +165,4 @@ public class MinioUtils {
             return null;
         }
     }
-
 }

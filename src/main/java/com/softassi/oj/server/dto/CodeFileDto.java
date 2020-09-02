@@ -18,6 +18,8 @@ public class CodeFileDto implements Serializable {
 
     private String filename;
 
+    private String content;
+
     private String filehash;
 
     private Long size;
@@ -25,6 +27,10 @@ public class CodeFileDto implements Serializable {
     @JsonProperty("upload_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime uploadTime = LocalDateTime.now();
+
+    @JsonProperty("update_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updateTime = LocalDateTime.now();
 
     public String getId() {
         return id;
@@ -36,6 +42,14 @@ public class CodeFileDto implements Serializable {
 
     public String getFilename() {
         return filename;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public void setFilename(String filename) {
@@ -64,5 +78,27 @@ public class CodeFileDto implements Serializable {
 
     public void setUploadTime(LocalDateTime uploadTime) {
         this.uploadTime = uploadTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("CodeFileDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", filename='").append(filename).append('\'');
+        sb.append(", content='").append(content).append('\'');
+        sb.append(", filehash='").append(filehash).append('\'');
+        sb.append(", size=").append(size);
+        sb.append(", uploadTime=").append(uploadTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append('}');
+        return sb.toString();
     }
 }
