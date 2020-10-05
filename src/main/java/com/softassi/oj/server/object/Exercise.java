@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.checkerframework.framework.qual.FromStubFile;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -62,6 +63,13 @@ public class Exercise {
     @JsonProperty("pass_rate")
     private double passRate;
 
+    @Field("submit_number")
+    @JsonProperty("submit_number")
+    private Integer submitNumber;
+
+    @Field("pass_number")
+    @JsonProperty("pass_number")
+    private Integer passNumber;
     @Field("tag_id")
     @JsonProperty("tag_id")
     private String tagId;

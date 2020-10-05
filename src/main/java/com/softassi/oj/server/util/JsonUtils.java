@@ -33,7 +33,7 @@ public class JsonUtils {
             // list字段如果为null，输出为[]，而不是null
             SerializerFeature.WriteNullListAsEmpty,
             // 数值字段如果为null，输出为0，而不是null
-//            SerializerFeature.WriteNullNumberAsZero,
+            // erializerFeature.WriteNullNumberAsZero,
             // Boolean字段如果为null，输出为false，而不是null
             SerializerFeature.WriteNullBooleanAsFalse,
             // 字符类型字段如果为null，输出为""，而不是null
@@ -156,8 +156,7 @@ public class JsonUtils {
      * @return
      */
     public static Object strToJson(String str) {
-        Object objectJson = JSON.parse(str);
-        return objectJson;
+        return JSON.parse(str);
     }
 
     /**
@@ -167,8 +166,7 @@ public class JsonUtils {
      * @return
      */
     public static <K, V> Map<K, V> strToMap(String str) {
-        Map<K, V> m = (Map<K, V>) JSONObject.parseObject(str);
-        return m;
+        return (Map<K, V>) JSONObject.parseObject(str);
     }
 
     /**
@@ -190,8 +188,7 @@ public class JsonUtils {
      * @return
      */
     public static <K, V> String mapToStr(Map<K, V> map) {
-        String s = JSONObject.toJSONString(map);
-        return s;
+        return JSONObject.toJSONString(map);
     }
 }
 

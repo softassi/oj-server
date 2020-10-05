@@ -5,6 +5,7 @@ import com.softassi.oj.server.util.CommonEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.omg.CORBA.COMM_FAILURE;
 
 @Data
 @AllArgsConstructor
@@ -36,6 +37,21 @@ public class ResultBody {
         return rb;
     }
 
+    public static ResultBody success(String message, Object data) {
+        ResultBody rb = new ResultBody();
+        rb.setCode(CommonEnum.SUCCESS.getResultCode());
+        rb.setMessage(message);
+        rb.setResult(data);
+        return rb;
+    }
+
+    public static ResultBody success(String code, String message, Object data) {
+        ResultBody rb = new ResultBody();
+        rb.setCode(code);
+        rb.setMessage(message);
+        rb.setResult(data);
+        return rb;
+    }
     /**
      * 失败
      */
@@ -69,4 +85,11 @@ public class ResultBody {
         return rb;
     }
 
+    public static ResultBody error() {
+        ResultBody rb = new ResultBody();
+        rb.setCode(CommonEnum.SERVER_BUSY.getResultCode());
+        rb.setMessage(CommonEnum.SERVER_BUSY.getResultMsg());
+        rb.setResult(null);
+        return rb;
+    }
 }

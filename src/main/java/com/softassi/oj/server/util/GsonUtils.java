@@ -10,6 +10,8 @@ import java.util.Map;
 
 /**
  * gson工具类
+ *  最好是用JsonUtils不要用这个
+ *  用这个也没问题
  */
 public class GsonUtils {
 

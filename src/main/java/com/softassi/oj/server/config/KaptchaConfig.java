@@ -14,7 +14,7 @@ public class KaptchaConfig {
         DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
         Properties properties = new Properties();
         properties.setProperty("kaptcha.border", "no");
-//        properties.setProperty("kaptcha.border.color", "105,179,90");
+        // properties.setProperty("kaptcha.border.color", "105,179,90");
         properties.setProperty("kaptcha.textproducer.font.color", "blue");
         properties.setProperty("kaptcha.image.width", "90");
         properties.setProperty("kaptcha.image.height", "32");
@@ -34,7 +34,7 @@ public class KaptchaConfig {
         DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
         Properties properties = new Properties();
         properties.setProperty("kaptcha.border", "no");
-//        properties.setProperty("kaptcha.border.color", "105,179,90");
+        // properties.setProperty("kaptcha.border.color", "105,179,90");
         properties.setProperty("kaptcha.textproducer.font.color", "blue");
         properties.setProperty("kaptcha.image.width", "90");
         properties.setProperty("kaptcha.image.height", "45");
